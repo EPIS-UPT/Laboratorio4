@@ -1,0 +1,87 @@
+﻿@model Lab04_martinez.Models.ClsEncuesta
+@{
+    ViewBag.Title = "Encuestar";
+}
+
+
+<div>
+    <h2>Encuesta de cursos</h2>
+    <br />
+    @using (Html.BeginForm("Encuestar", "Encuesta", FormMethod.Post))
+    {
+        <p>Seleccionaste el @Request["curso"]</p>
+
+        <table style="width:80%;margin:1em auto;">
+            <tr>
+                <td>Cursos</td>
+                <td>Votos</td>
+                <td>Porcentaje</td>
+                <td>Barra</td>
+            </tr>
+            <tr>
+                <td>
+                    <p><label>@Html.RadioButton("Curso", "Curso 1")@ViewBag.Pregunta1</label></p>
+                </td>
+                <td>
+                    <p><label>@Session["cv1"]</label></p>
+                </td>
+                <td>
+                    <p><label>@Session["pc1"]%</label></p>
+                </td>
+                <td>
+                    <progress id="pb1" value="@Session["pc1"]" max="100.00"></progress>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p><label>@Html.RadioButton("Curso", "Curso 2")@ViewBag.Pregunta2</label></p>
+                </td>
+                <td>
+                    <p><label>@Session["cv2"]</label></p>
+                </td>
+                <td>
+                    <p><label>@Session["pc2"]%</label></p>
+                </td>
+                <td>
+                    <progress id="pb2" value="@Session["pc2"]" max="100.00"></progress>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <p><label>@Html.RadioButton("Curso", "Curso 3")@ViewBag.Pregunta3</label></p>
+                </td>
+                <td>
+                    <p><label>@Session["cv3"]</label></p>
+                </td>
+                <td>
+                    <p><label>@Session["pc3"]%</label></p>
+                </td>
+                <td>
+                    <progress id="pb3" value="@Session["pc3"]" max="100.00"></progress>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Total de votos</td>
+                <td>
+                    <p><label>@Session["totalvotos"]</label></p>
+                </td>
+                <td>
+                    <p><label>@Session["totalporcentaje"]%</label></p>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><button>Votar</button></td>
+                <td><button>Reiniciar</button></td>
+                <td></td> 
+            </tr>
+        </table>
+    }
+    
+</div>
+

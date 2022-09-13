@@ -1,0 +1,33 @@
+﻿@model Lab04_martinez.Models.ClsAteatorio
+@{
+    ViewBag.Title = "Generar";
+}
+
+<h2>Generar</h2>
+
+
+<h1>Ganador de entrada</h1>
+<br />
+
+@using (Html.BeginForm("Generar", "Aleatorio", FormMethod.Post))
+            {
+                <p>
+                    @Html.LabelFor(model=>model.a,"Ruleta")
+                </p><button>Jugar</button>
+
+    if (Session["i"] == null)
+    {
+        Session["i"] = 1;
+        <h2>- ? - ?</h2>
+    }
+    else
+    {
+        int contador = Convert.ToInt32(Session["i"]);
+        contador++;
+        Session["i"] = contador;
+        <h2>@Model.a - @Model.b - @Model.c  </h2>
+    }
+}
+
+<br />
+@Model.resultado;

@@ -1,0 +1,36 @@
+﻿@model Lab04_martinez.Models.ClsVenta
+@{
+    ViewBag.Title = "CalcularVenta";
+}
+
+<h2>CalcularVenta</h2>
+<div>
+    @using (Html.BeginForm("CalcularVenta", "Venta", FormMethod.Post)){ 
+        <div>
+            <p>
+                @Html.Label("Curso 1: ")<br />
+                @Html.CheckBoxFor(model => model.cursophp, "--")  PHP con Laravel
+            </p>
+            <p>
+                @Html.Label("Curso 2: ")<br />
+                @Html.CheckBoxFor(model => model.cursoweb, "--") Maquetacion y diseño web
+            </p>
+            <p>
+                @Html.Label("Curso 3: ")<br />
+                @Html.CheckBoxFor(model => model.cursomovil, "--") Android
+            </p>
+            <p>
+                @Html.Label("Curso 4: ")<br />
+                @Html.CheckBoxFor(model => model.cursopython, "--")  Analitica de datos con Python
+            </p>
+            <p>
+                <label>Subtotal: S/. @Model.subtotal</label><br />
+                <label>IGV: S/. @Model.igv</label><br />
+                <label>Total: S/. @Model.total</label><br />
+            </p>
+
+            <button>Calcular</button>
+        </div>
+    }
+</div>
+

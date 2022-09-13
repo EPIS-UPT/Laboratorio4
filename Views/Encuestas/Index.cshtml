@@ -1,0 +1,74 @@
+﻿@model Lab04_martinez.Models.ClsEncuestas
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Encuesta</h2>
+<br />
+<form id="frmEncuesta" method="post">
+    <div class="auto-style1">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayFor(Model => Model.titulo)
+            </dt>
+            <dd>
+                @Html.DisplayFor(Model => Model.titulo)
+            </dd>
+        </dl>
+        <br />
+        <table class="table table-bordered table-responsive table-hover table-striper">
+            <tr>
+                <th>Alternativa</th>
+                <th>Votos</th>
+                <th>Porcentaje</th>
+                <th>Barra</th>
+            </tr>
+
+            @for (int i = 0; i < Model.Alternativa.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <input type="radio" name="index"
+                               value="@(i)" />
+                        @(Model.Alternativa[i].titulo)
+                    </td>
+                    <td>
+                        @(Model.Alternativa[i].cantidad)
+                    </td>
+                    <td>
+                        @(Model.Alternativa[i].porcentaje)%
+                    </td>
+                    <td>
+                        <progress value="@(Model.Alternativa[i].porcentaje)"
+                                  max="100"></progress>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <th>Total de votos</th>
+                <th>@Html.DisplayFor(model => model.total)</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Votar" class="btn btn-primary" />
+                </td>
+                <td>
+                    <input type="reset" value="Limpiar" class="btn btn-danger" />
+                </td>
+                <td></td>
+            </tr>
+
+        </table>
+    </div>
+</form>
+
+
